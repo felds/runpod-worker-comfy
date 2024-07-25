@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 set -ex
 
-SHORT_SHA=$(git rev-parse --short HEAD)
-IMAGE_NAME=felds/runpod-comfy
+short_sha=$(git rev-parse --short HEAD)
 
-TAG="${SHORT_SHA}-no-models"
-docker build . --platform linux/amd64 --tag "${IMAGE_NAME}:${TAG}" --build-arg SKIP_DEFAULT_MODELS=1
-docker push "${IMAGE_NAME}:${TAG}"
+image_name=felds/runpod-comfy
+dockerfile=Dockerfile-cuda12
+tag="${short_sha}-no-models-cuda12"
+
+docker build . --file "${dockerfile}" --platform linux/amd64 --tag "${image_name}:${tag}" --build-arg SKIP_DEFAULT_MODELS=1
+docker push "${image_name}:${tag}"
