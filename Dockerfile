@@ -41,6 +41,14 @@ RUN pip3 install runpod requests
 # Support for the network volume
 ADD src/extra_model_paths.yaml ./
 
+# @TODO install custom nodes
+RUN <<EOF
+FOLDER=./custom_nodes/ComfyUI_IPAdapter_plus
+git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git "${FOLDER}"
+cd "${FOLDER}"
+pip install -r requirements.txt
+EOF
+
 
 # # # Download checkpoints/vae/LoRA to include in image.
 # # ARG SKIP_DEFAULT_MODELS
