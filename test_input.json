@@ -1,4 +1,5 @@
 {
+  "executionTimeout": "2_000",
   "input": {
     "workflow": {
       "3": {

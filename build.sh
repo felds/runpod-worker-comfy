@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 set -ex
 
-short_sha=$(git rev-parse --short HEAD)
+SHORT_SHA=$(git rev-parse --short HEAD)
 
-image_name=felds/runpod-comfy
-dockerfile=Dockerfile-cuda12
-tag="${short_sha}-no-models-cuda12"
+IMAGE_NAME=felds/runpod-comfy
 
-docker build . --file "${dockerfile}" --platform linux/amd64 --tag "${image_name}:${tag}" --build-arg SKIP_DEFAULT_MODELS=1
-docker push "${image_name}:${tag}"
+VERSION="${SHORT_SHA}-ipadapter"
+TAG_LOCAL="${IMAGE_NAME}:${VERSION}"
+TAG_REMOTE="public.ecr.aws/f0x4i4f8/gpu-serverless-public:${VERSION}"
+
+docker build . --platform linux/amd64 --tag $TAG_LOCAL --tag $TAG_REMOTE
+docker push $TAG_REMOTE
+

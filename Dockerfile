@@ -44,7 +44,7 @@ RUN <<EOF
     # Install custom nodes
     set -ex
     FOLDER=./custom_nodes/ComfyUI_IPAdapter_plus
-    git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git 
+    git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git $FOLDER
 EOF
 
 
