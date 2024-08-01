@@ -30,7 +30,7 @@ EOF
 WORKDIR /comfyui
 
 # Clone ComfyUI repository
-RUN git clone https://github.com/comfyanonymous/ComfyUI.git .
+RUN git clone https://github.com/comfyanonymous/ComfyUI.git  --depth=1 .
 
 RUN <<EOF
     # Install ComfyUI dependencies
@@ -43,8 +43,11 @@ EOF
 RUN <<EOF
     # Install custom nodes
     set -ex
-    FOLDER=./custom_nodes/ComfyUI_IPAdapter_plus
-    git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git $FOLDER
+    cd ./custom_nodes/
+    (git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git --depth=1)
+    (git clone https://github.com/cubiq/ComfyUI_essentials --depth=1 && cd ComfyUI_essentials && pip3 install -r requirements.txt)
+    (git clone https://github.com/rgthree/rgthree-comfy.git --depth=1 && cd rgthree-comfy && pip3 install -r requirements.txt)
+    (git clone https://github.com/Acly/comfyui-tooling-nodes.git --depth=1 && cd comfyui-tooling-nodes && pip install -r requirements.txt)
 EOF
 
 

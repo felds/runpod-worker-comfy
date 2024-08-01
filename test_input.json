@@ -1,5 +1,4 @@
 {
-  "executionTimeout": "2_000",
   "input": {
     "workflow": {
       "3": {
@@ -19,7 +18,7 @@
       },
       "4": {
         "inputs": {
-          "ckpt_name": "sd_xl_base_1.0.safetensors"
+          "ckpt_name": "wildcardxXL_v4Rundiffusion.safetensors"
         },
         "class_type": "CheckpointLoaderSimple"
       },

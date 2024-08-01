@@ -11,4 +11,4 @@ wget -O vae/sdxl-vae-fp16-fix.safetensors https://huggingface.co/madebyollin/sdx
 # ipadapter
 wget -O ipadapter/ip-adapter-plus_sdxl_vit-h.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors
 wget -O clip_vision/CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors 
-wget -O controlnet/controlnet-scribble-sdxl-1.0 https://huggingface.co/xinsir/controlnet-scribble-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors
+wget -O controlnet/controlnet-scribble-sdxl-1.0.safetensors https://huggingface.co/xinsir/controlnet-scribble-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors

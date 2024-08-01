@@ -1,0 +1,360 @@
+{
+  "input": {
+    "workflow": {
+      "3": {
+        "inputs": {
+          "seed": 897641687416,
+          "steps": 30,
+          "cfg": 6,
+          "sampler_name": "dpmpp_3m_sde_gpu",
+          "scheduler": "sgm_uniform",
+          "denoise": 1,
+          "model": [
+            "44",
+            0
+          ],
+          "positive": [
+            "17",
+            0
+          ],
+          "negative": [
+            "17",
+            1
+          ],
+          "latent_image": [
+            "20",
+            0
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "4": {
+        "inputs": {
+          "ckpt_name": "wildcardxXL_v4Rundiffusion.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "Load Checkpoint"
+        }
+      },
+      "6": {
+        "inputs": {
+          "text": "a contemporary collage portrait of a woman",
+          "clip": [
+            "4",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Prompt)"
+        }
+      },
+      "7": {
+        "inputs": {
+          "text": "NSFW",
+          "clip": [
+            "4",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Prompt)"
+        }
+      },
+      "8": {
+        "inputs": {
+          "samples": [
+            "3",
+            0
+          ],
+          "vae": [
+            "4",
+            2
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAE Decode"
+        }
+      },
+      "15": {
+        "inputs": {
+          "image": "sketch.png",
+          "upload": "image"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "Load Image"
+        }
+      },
+      "17": {
+        "inputs": {
+          "strength": 0.7000000000000001,
+          "start_percent": 0,
+          "end_percent": 0.9,
+          "positive": [
+            "6",
+            0
+          ],
+          "negative": [
+            "7",
+            0
+          ],
+          "control_net": [
+            "18",
+            0
+          ],
+          "image": [
+            "19",
+            0
+          ]
+        },
+        "class_type": "ControlNetApplyAdvanced",
+        "_meta": {
+          "title": "Apply ControlNet (Advanced)"
+        }
+      },
+      "18": {
+        "inputs": {
+          "control_net_name": "controlnet-scribble-sdxl-1.0.safetensors"
+        },
+        "class_type": "ControlNetLoader",
+        "_meta": {
+          "title": "Load ControlNet Model"
+        }
+      },
+      "19": {
+        "inputs": {
+          "image": [
+            "15",
+            0
+          ]
+        },
+        "class_type": "ImageInvert",
+        "_meta": {
+          "title": "Invert Image"
+        }
+      },
+      "20": {
+        "inputs": {
+          "pixels": [
+            "15",
+            0
+          ],
+          "vae": [
+            "4",
+            2
+          ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+          "title": "VAE Encode"
+        }
+      },
+      "22": {
+        "inputs": {
+          "image": "style.png",
+          "upload": "image"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "Load Image"
+        }
+      },
+      "27": {
+        "inputs": {
+          "weight": 0.9,
+          "weight_type": "strong style transfer",
+          "combine_embeds": "concat",
+          "start_at": 0,
+          "end_at": 1,
+          "embeds_scaling": "K+mean(V) w/ C penalty",
+          "enhance_tiles": [
+            "31",
+            0
+          ],
+          "enhance_ratio": 0.45,
+          "model": [
+            "36",
+            0
+          ],
+          "ipadapter": [
+            "36",
+            1
+          ],
+          "image": [
+            "33",
+            0
+          ]
+        },
+        "class_type": "IPAdapterClipVisionEnhancer",
+        "_meta": {
+          "title": "IPAdapter ClipVision Enhancer"
+        }
+      },
+      "28": {
+        "inputs": {
+          "value": "min(a,b)",
+          "a": [
+            "29",
+            0
+          ],
+          "b": [
+            "29",
+            1
+          ]
+        },
+        "class_type": "SimpleMath+",
+        "_meta": {
+          "title": "🔧 Simple Math"
+        }
+      },
+      "29": {
+        "inputs": {
+          "image": [
+            "22",
+            0
+          ]
+        },
+        "class_type": "GetImageSize+",
+        "_meta": {
+          "title": "🔧 Get Image Size"
+        }
+      },
+      "30": {
+        "inputs": {
+          "width": [
+            "28",
+            0
+          ],
+          "height": [
+            "28",
+            0
+          ],
+          "position": "top-center",
+          "x_offset": 0,
+          "y_offset": 0,
+          "image": [
+            "22",
+            0
+          ]
+        },
+        "class_type": "ImageCrop+",
+        "_meta": {
+          "title": "🔧 Image Crop"
+        }
+      },
+      "31": {
+        "inputs": {
+          "value": "4"
+        },
+        "class_type": "SimpleMath+",
+        "_meta": {
+          "title": "🔧 Simple Math"
+        }
+      },
+      "32": {
+        "inputs": {
+          "value": "a*224",
+          "a": [
+            "31",
+            0
+          ]
+        },
+        "class_type": "SimpleMath+",
+        "_meta": {
+          "title": "🔧 Simple Math"
+        }
+      },
+      "33": {
+        "inputs": {
+          "upscale_method": "lanczos",
+          "width": [
+            "32",
+            0
+          ],
+          "height": [
+            "32",
+            0
+          ],
+          "crop": "disabled",
+          "image": [
+            "30",
+            0
+          ]
+        },
+        "class_type": "ImageScale",
+        "_meta": {
+          "title": "Upscale Image"
+        }
+      },
+      "34": {
+        "inputs": {
+          "rows": [
+            "31",
+            0
+          ],
+          "cols": [
+            "31",
+            0
+          ],
+          "overlap": 0,
+          "overlap_x": 0,
+          "overlap_y": 0,
+          "image": [
+            "33",
+            0
+          ]
+        },
+        "class_type": "ImageTile+",
+        "_meta": {
+          "title": "🔧 Image Tile"
+        }
+      },
+      "36": {
+        "inputs": {
+          "preset": "PLUS (high strength)",
+          "model": [
+            "4",
+            0
+          ]
+        },
+        "class_type": "IPAdapterUnifiedLoader",
+        "_meta": {
+          "title": "IPAdapter Unified Loader"
+        }
+      },
+      "43": {
+        "inputs": {
+          "filename_prefix": "ComfyUI",
+          "images": [
+            "8",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "Save Image"
+        }
+      },
+      "44": {
+        "inputs": {
+          "scale": 3,
+          "model": [
+            "27",
+            0
+          ]
+        },
+        "class_type": "PerturbedAttentionGuidance",
+        "_meta": {
+          "title": "PerturbedAttentionGuidance"
+        }
+      }
+    }
+  }
+}
