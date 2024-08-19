@@ -71,3 +71,6 @@ WORKDIR /
 # Add the start and the handler
 ADD src/start.sh src/rp_handler.py test_input.json ./
 RUN chmod +x /start.sh
+
+# Start the container
+CMD /start.sh

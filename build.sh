@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-SHORT_MD5=$(find . -type f -exec md5 {}\; | md5 | cut -c1-6)
+SHORT_MD5=$(find . -type f -exec md5 {} \; | md5 | cut -c1-6)
 IMAGE_NAME=felds/runpod-comfy
 
 VERSION="${SHORT_MD5}-ipadapter"
